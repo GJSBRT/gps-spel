@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import CodeForm from './CodeForm'
-import { Link } from 'react-router-dom'
 
 export default function() {
     return (

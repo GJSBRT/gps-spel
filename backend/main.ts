@@ -1,11 +1,27 @@
 import express from 'express';
-const app = express();
 import config from './config.json';
+import { createServer } from 'http';
+import { Server } from "socket.io";
+import joinGame from './handlers/joinGame';
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+const app = express();
+const server = createServer(app);
+const socketio = new Server(server, {
+    cors: {
+        origin: "*"
+    }
 });
 
-app.listen(config.port, () => {
-    return console.log(`Express is listening at http://localhost:${config.port}`);
+socketio.on('connection', (socket) => {
+    socket.emit('druif', { message: 'a new client connected' })
+
+    socket.on('joinGame', joinGame);
+})
+
+server.listen(config.port, () => {
+    console.log(`Server listening at http://localhost:${config.port}`);
 });
+
+export {
+    socketio
+};

@@ -1,5 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import * as React from 'react'
+import * as ReactDOM from 'react-dom/client'
 import {
 	createBrowserRouter,
 	RouterProvider,
@@ -7,8 +7,8 @@ import {
 import './index.css';
 import store from './store';
 import { Provider } from 'react-redux';
-import Home from '@/pages/Home';
-import Layout from '@/components/Layout';
+import Home from './pages/Home';
+import Layout from './components/Layout';
 
 const router = createBrowserRouter([
 	{
